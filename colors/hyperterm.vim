@@ -27,14 +27,14 @@ if !exists("g:hyperterm_termcolors")
 endif
 
 " Not all terminals support italics properly. If yours does, opt-in.
-if !exists("g:onedark_terminal_italics")
-  let g:onedark_terminal_italics = 0
+if !exists("g:hyperterm_terminal_italics")
+  let g:hyperterm_terminal_italics = 0
 endif
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
 " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
-  if g:onedark_terminal_italics == 0
+  if g:hyperterm_terminal_italics == 0
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
@@ -42,7 +42,7 @@ function! s:h(group, style)
       unlet a:style.gui
     endif
   endif
-  if g:onedark_termcolors == 16
+  if g:hyperterm_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
   else
